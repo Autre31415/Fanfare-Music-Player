@@ -14,6 +14,7 @@ async function bundle () {
   // bundle js
   const webpackConfig = {
     mode: 'production',
+    devtool: process.env.DEV_MODE ? 'source-map' : null,
     optimization: {
       minimize: false // prevent minification
     },
