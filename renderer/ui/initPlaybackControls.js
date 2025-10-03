@@ -526,6 +526,17 @@ async function updateQueue (which) {
       }
     }
   }
+
+  // purge automatic and manual play queues of any files that have been cached for some time and are no longer in the queue
+  const now = Date.now()
+  for (const file in window.fileCaches) {
+    const isInManualQueue = window.manualPlayQueue.includes(file)
+    const isInAutomaticQueue = window.automaticPlayQueue.includes(file)
+    const isOlderThanHour = now - window.fileCaches[file].cacheTime > 60 * 60 * 1000
+    if (!isInManualQueue && !isInAutomaticQueue && isOlderThanHour && window.currentFile !== file) {
+      delete window.fileCaches[file]
+    }
+  }
 }
 
 function displayMetadata () {
