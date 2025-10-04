@@ -217,6 +217,7 @@ function stopPlayback () {
     window.scheduledNextSource = null
   }
 }
+window.stopPlayback = stopPlayback
 
 // called when the user requests a specific audio file to be played
 window.playAudioFile = async function (file, via, gapless) {
@@ -580,6 +581,7 @@ function displayMetadata () {
 
   window.addTitleToEllipsisOnPlaybackMetadata()
 }
+window.displayMetadata = displayMetadata
 
 // format time in minutes:seconds
 function formatTime (seconds) {
@@ -728,24 +730,27 @@ function nextFile (gapless) {
   if (window.repeat === 'file') window.playAudioFile(window.currentFile, 'repeatFile', gapless) // the current file is repeating
   else if (window.manualPlayQueue[0]) window.playAudioFile(window.manualPlayQueue[0], 'manualPlayQueue', gapless) // play next file in the manual queue if any exist
   else if (window.automaticPlayQueue[0]) window.playAudioFile(window.automaticPlayQueue[0], 'automaticPlayQueue', gapless) // play next file in the automatic queue if any exist
-  else {
-    document.querySelector('#playPauseButton input').src = 'renderer://images/play.svg'
-    document.querySelector('#playPauseButton').title = 'Play'
-    document.getElementById('seekBar').value = 0
-    document.getElementById('seekBar').disabled = true
-    document.getElementById('currentTime').textContent = '0:00'
-    document.getElementById('duration').textContent = formatTime(0)
-    document.getElementById('file').classList.add('musicIcon')
-    document.getElementById('artist').innerHTML = '&nbsp;'
-    document.getElementById('emdash').innerHTML = '&nbsp;'
-    document.getElementById('album').innerHTML = '&nbsp;'
-    document.getElementById('fileTitle').innerHTML = '&nbsp;'
-    window.playing = false
-    clearPlayQueueImages()
-    window.currentFile = null
-    updateQueue('automaticPlayQueue')
-  }
+  else resetPlaybackControls()
 }
+
+function resetPlaybackControls () {
+  document.querySelector('#playPauseButton input').src = 'renderer://images/play.svg'
+  document.querySelector('#playPauseButton').title = 'Play'
+  document.getElementById('seekBar').value = 0
+  document.getElementById('seekBar').disabled = true
+  document.getElementById('currentTime').textContent = '0:00'
+  document.getElementById('duration').textContent = formatTime(0)
+  document.getElementById('file').classList.add('musicIcon')
+  document.getElementById('artist').innerHTML = '&nbsp;'
+  document.getElementById('emdash').innerHTML = '&nbsp;'
+  document.getElementById('album').innerHTML = '&nbsp;'
+  document.getElementById('fileTitle').innerHTML = '&nbsp;'
+  window.playing = false
+  clearPlayQueueImages()
+  window.currentFile = null
+  updateQueue('automaticPlayQueue')
+}
+window.resetPlaybackControls = resetPlaybackControls
 
 function addNextFilesToAutomaticPlayQueue () {
   if (window.repeat === 'set') {
