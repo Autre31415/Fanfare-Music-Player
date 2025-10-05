@@ -8,7 +8,7 @@ async function bundle () {
   if (!fs.existsSync('renderer/.build')) fs.mkdirSync('renderer/.build')
 
   console.log('  • compiling scss to css')
-  const scss = sass.compile('./renderer/css/styles.scss')
+  const scss = sass.compile('./renderer/css/main.scss')
   fs.writeFileSync('renderer/.build/styles.css', scss.css)
 
   // bundle js

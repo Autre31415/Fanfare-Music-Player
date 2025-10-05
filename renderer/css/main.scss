@@ -1,0 +1,10 @@
+// dependency css
+@use '../../node_modules/semantic-forms/dist/semantic-forms.css'; // https://rooseveltframework.org/docs/semantic-forms/latest
+@use '../../node_modules/tippy.js/dist/tippy.css'; // https://atomiks.github.io/tippyjs
+@use '../../node_modules/tabulator-tables/dist/css/tabulator_simple.min.css'; // https://tabulator.info
+
+// app css
+@use 'global';
+@use 'header';
+@use 'sidebar';
+@use 'content';
