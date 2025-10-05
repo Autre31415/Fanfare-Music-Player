@@ -1,0 +1,205 @@
+nav#header {
+  background-color: #f6f6f6;
+  border-bottom: 1px #ddd solid;
+  -webkit-app-region: drag;
+  height: 36px;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+
+  button:not(.clear)  {
+    position: relative;
+    background: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    -webkit-app-region: no-drag;
+    font-size: 1px;
+    width: 32px;
+    height: 32px;
+
+    svg, input[type="image"] {
+      width: 22px;
+      height: 22px;
+      opacity: 0.5;
+    }
+  }
+
+  button.active {
+    svg, input[type="image"] {
+      opacity: 1;
+    }
+  }
+
+  button.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 3px;
+    left: calc(50% - 3px / 2);
+    width: 3px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    opacity: 1;
+  }
+
+  button#shuffleButton, button#repeatButton {
+    svg, input[type="image"] {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  button svg.repeat-1 {
+    display: none;
+  }
+
+  button.selected input {
+    opacity: 1;
+  }
+
+  button:hover {
+    background-color: #eee;
+  }
+
+  button:active {
+    background-color: #e8e8e8;
+  }
+
+  > div#playbackControls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 0 80px;
+
+    div#buttons {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    div#file {
+      flex: 1 1 50%;
+      align-items: center;
+      justify-content: center;
+      max-width: 50%;
+      text-align: center;
+
+      div#seek {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        input#seekBar {
+          flex: 1;
+          -webkit-app-region: no-drag;
+          margin: 0 10px;
+        }
+      }
+
+      p {
+        margin: 0;
+        font-size: 80%;
+        opacity: 0.5;
+      }
+
+      p#fileTitle {
+        opacity: 0.8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-app-region: no-drag;
+      }
+
+      p#artistInfo {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-app-region: no-drag;
+      }
+    }
+
+    div#volumeControls {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+
+      button:first-of-type {
+        padding-right: 0;
+      }
+
+      input[type="range"] {
+        width: 70px;
+        -webkit-app-region: no-drag;
+      }
+
+      svg, input[type="image"] {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  div#file.musicIcon {
+    background-image: url('renderer://images/music-note.png');
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 4px;
+  }
+
+  > div#search {
+    min-width: 150px;
+    width: 365px;
+    max-height: 46px;
+    margin-right: 6px;
+
+    dd {
+      position: relative;
+      top: -10px;
+
+      input {
+        -webkit-app-region: no-drag;
+      }
+    }
+  }
+
+  > div#buttonGroup1 {
+    width: 70px;
+    min-width: 70px;
+    display: flex;
+
+    svg, input[type="image"] {
+      width: 16px;
+      height: 16px;
+    }
+
+    button#playbackSpeedButton {
+      padding: 1px;
+
+      svg {
+        position: relative;
+        top: 1px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  > div#buttonGroup2 {
+    width: 70px;
+    min-width: 70px;
+
+    svg, input[type="image"] {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  button#lyricsButton svg {
+    position: relative;
+    top: 1px;
+  }
+}

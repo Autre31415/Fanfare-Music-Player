@@ -1,0 +1,101 @@
+:root {
+  --row-highlight: #0575ff; // overridden by electron
+  --accent-color: #0575ff; // overridden by electron
+  --accent-color-contrast-color: #fff; // overridden by electron
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.0s;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+input[type="range"] {
+  outline: none;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  user-select: none;
+
+  > main {
+    min-height: 100vh;
+  }
+}
+
+button, svg, input[type="image"] {
+  cursor: default;
+  outline: none;
+}
+
+img, svg, input[type="image"], dd button {
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+dialog {
+  z-index: 9;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px #c0c0c0 solid;
+
+  p:first-of-type {
+    margin-top: 0;
+  }
+
+  form.semanticForms {
+    container-type: normal;
+  }
+
+  input#playbackSpeedSlider {
+    width: 150px;
+  }
+}
+
+// overrides for semantic forms defaults
+form.semanticForms {
+  --semanticFormsInputFontSize: 14px; // from default 16px
+  --semanticFormsInputHeight: 36px; // from default of 38px
+  --semanticFormsInputMinWidth: 125px; // from default of 250px
+
+  button.clear {
+    width: 23px; // from default of 25px
+    height: 23px; // from default of 25px
+  }
+
+  dd button.clear {
+    cursor: default; // remove hand cursor from semantic forms defaults on x button
+  }
+}
+
+div.resizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 2;
+}
+
+.halfTranslucent {
+  opacity: 0.5;
+}
+
+.copyCursor {
+  cursor: copy !important;
+
+  button, .tabulator, .tabulator-row, .tabulator-col {
+    cursor: copy !important;
+  }
+}
