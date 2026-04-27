@@ -39,7 +39,7 @@ async function createWindow () {
     minHeight: 670,
     show: false,
     autoHideMenuBar: true,
-    frame: process.platform !== 'darwin', // use native frame for linux/windows, custom frame for macOS
+    frame: false,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default', // use hiddenInset for macOS, default for others
     trafficLightPosition: process.platform === 'darwin' ? { x: 18, y: 18 } : undefined, // only apply traffic light position for macOS
     webPreferences: {

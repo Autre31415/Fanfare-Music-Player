@@ -11,6 +11,7 @@ module.exports = async () => {
   contextMenu({ // options documented here: https://github.com/sindresorhus/electron-context-menu
     showSearchWithGoogle: false,
     showCopyImage: false,
+    showSelectAll: false,
     prepend: (defaultActions, params, browserWindow) => {
       if (global.contextMenuUIContext.is) {
         menu = []
