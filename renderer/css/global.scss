@@ -62,6 +62,10 @@ dialog {
   }
 }
 
+input[type=range] {
+  accent-color: var(--accent-color);
+}
+
 // overrides for semantic forms defaults
 form.semanticForms {
   --semanticFormsInputFontSize: 14px; // from default 16px

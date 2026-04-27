@@ -10,7 +10,8 @@ async function init () {
 
   // create a css variable reflecting the operating system highlight color
   electron.onAccentColor((color) => {
-    if (color.length === 9) color = color.substring(0, color.length - 2) // remove the FF at the end
+    if (color.charAt(0) === '#' && color.charAt(1) === '#') color = color.substring(1) // remove extra # if it is present
+    if (color.length === 9 && color.charAt(7) === 'F' && color.charAt(8) === 'F') color = color.substring(0, color.length - 2) // remove the FF at the end
     document.documentElement.style.setProperty('--accent-color', color)
     document.documentElement.style.setProperty('--row-highlight', color)
     window.accentColor = color
